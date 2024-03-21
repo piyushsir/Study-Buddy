@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychometric Evaluation</title>
+    <link rel="stylesheet" href="static/form.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="questions">
+            <p class="subtitle">Please answer the following questions honestly for a proper evaluation.</p>
+
+            <form id="evaluationForm" method="post" onsubmit="return readandwrite();">
+                <div class="question">
+                    <label for="question1">Q1. how comfortable are you in social situations with new people?</label>
+                    <input type="text" id="question1" name="question1" required min="1" max="10">
+                </div>
+
+                <div class="question">
+                    <label for="question2">Q2. Do you prefer detailed, structured plans or are you more spontaneous and
+                        flexible in your approach to tasks?</label>
+                    <input type="text" id="question2" name="question2" required>
+                </div>
+
+                <div class="question">
+                    <label for="question3">Q3. When faced with a challenge, do you tend to rely on logic and analysis or
+                        trust your intuition and gut feelings?</label>
+                    <input type="text" id="question3" name="question3" required>
+                </div>
+
+                <div class="question">
+                    <label for="question4">Q4. How do you handle stress? Are you more likely to seek social support,
+                        take time for self-reflection, or engage in physical activity to cope?</label>
+                    <input type="text" id="question4" name="question4" required>
+                </div>
+
+                <div class="question">
+                    <label for="question5">Q5. In group settings, do you usually take on a leadership role, prefer to
+                        contribute as a team member, or step back and observe without actively participating?</label>
+                    <input type="text" id="question5" name="question5" required>
+                </div>
+
+                <button type="submit" onclick="readandwrite()">Submit</button>
+            </form>
+            <!-- <button>SHOW</button> -->
+        </div>
+
+        <div class="answers">
+            <textarea id="123" rows="35" cols="7" placeholder="Your answers will be displayed here" readonly></textarea>
+
+        </div>
+    </div>
+
+    <script>
+        //if(typeof window!="undefined"){
+        function readandwrite() {
+            var res = `{{res}}`
+            if(res != "None"){
+                document.getElementById('123').value = res;
+            }
+            return true;
+        }
+        readandwrite();
+        $('#evaluationForm').on('submit', function () {
+            readandwrite();
+            return false;
+        });
+
+        function sayhello() {
+            document.getElementById("123").value = "bacd"
+        }
+        //}
+    </script>
+</body>
+
+</html>
